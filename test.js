@@ -10,7 +10,14 @@ if(DEBUG){
 }
 `;
 const babelConfig = {
-  plugins: ["./index.js"], //指定插件
+  plugins: [
+    [
+      "./index.js",
+      {
+        useRemove: true,
+      },
+    ],
+  ], //指定插件
 };
 const output = transformSync(code, babelConfig);
-console.log(output)
+console.log(output.code);
